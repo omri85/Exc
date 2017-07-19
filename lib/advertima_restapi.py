@@ -57,7 +57,7 @@ def get_params():
     """ Returns RequestParams with the request parameters if request is valid.
     Otherwise will return Bad Request response """
     params = RequestParams.parse(request.args)
-    if not params.is_valid:
+    if not params.is_valid():
         return abort(400, params.get_error_messages()[0])
     return params
 
