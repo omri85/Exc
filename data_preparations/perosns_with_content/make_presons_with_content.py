@@ -11,33 +11,6 @@ DATETIME_FORMAT_CSV = "%Y-%m-%d %H:%M:%S"
 DATETIME_FORMAT_ES = "%Y-%m-%dT%H:%M:%S"
 NUMBER_OF_CALC_THREADS = 6
 TEMP_FOLDER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "data")
-PERSON_INDEX_MAPPINGS = {
-            "mappings": {
-                "person": {
-                    "properties": {
-                        "device_id":{
-                            "type": "text",
-                        },
-                        "start": {
-                            "type": "date" 
-                        },
-                        "end": {
-                            "type": "date" 
-                        },
-                        "age":{
-                            "type": "long"
-                        },
-                        "gender":{
-                            "type": "text",
-                            "fielddata": true
-                        },
-                        "content_id":{
-                            "type": "text"
-                        }
-                    }
-                }
-            }
-        }
 PERSONS_WITH_CONTENT_FILE_NAME = "persons_with_content.csv"
 
 def get_events_for_person(person_record):

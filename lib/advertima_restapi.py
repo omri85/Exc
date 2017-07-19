@@ -5,10 +5,11 @@ from flask_restful import Resource, Api
 from flask_restful import reqparse
 from request_params import RequestParams
 from elasticsearch import Elasticsearch, TransportError
+from populate_db import upload_final_data
 
 app = Flask(__name__)
 api = Api(app)
-es = Elasticsearch()
+es = Elasticsearch(host='es', port=9200, http_auth=('elastic', 'changeme'))
 
 DATETIME_FORMAT_ES = "%Y-%m-%dT%H:%M:%S"
 DATETIME_FORMAT_RESPONSE = "%Y-%m-%d %H:%M:%S"
@@ -133,4 +134,7 @@ api.add_resource(AvgAge, '/avg-age')
 api.add_resource(GenderDist, '/gender-dist')
 
 if __name__ == '__main__':
-    app.run()
+    print "Uploading data to ES. Server will start when done..."
+    upload_final_data(es)
+    print "Data loading is done, starting server"
+    app.run(host='0.0.0.0', port=5000)
