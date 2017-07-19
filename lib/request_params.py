@@ -61,6 +61,6 @@ class RequestParams(object):
             request_params.add_model_error(MISSING_PARAM_FORAMT.format(missing_param))
         for datetime_format_error in datetime_format_errors:
             request_params.add_model_error(INVALID_DATE_FORMAT.format(datetime_format_error))
-        if request_params.start > request_params.end:
+        if request_params.start and request_params.end and request_params.start > request_params.end:
             request_params.add_model_error("End time must be later then start time")
         return request_params
