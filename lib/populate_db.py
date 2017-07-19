@@ -63,8 +63,8 @@ def upload_final_data(es):
     print "Done"
 
 def main():
-    es
-    upload_final_data()
+    es = Elasticsearch()
+    upload_final_data(es)
 
 if __name__ == '__main__':
     main()

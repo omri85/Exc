@@ -44,7 +44,8 @@ def get_query(start, end, device_id):
     return query
 
 def get_base_response(params):
-    """ Reutrns the base response JSON for api call """
+    """ Reutrns the base response JSON for api call
+    :params: RequestParams"""
     return {
         "start": datetime.strftime(params.start, DATETIME_FORMAT_RESPONSE),
         "end": datetime.strftime(params.end, DATETIME_FORMAT_RESPONSE),
@@ -61,7 +62,9 @@ def get_params():
     return params
 
 def make_es_request(content_id, query):
-    """ Returns the response from ES for index of content_id and filtered by query """
+    """ Returns the response from ES for index of content_id and filtered by query
+    :content_id: content id filter
+    :query: dict with filter definitions"""
     try:
         res = es.search(index=content_id, body=query)
         return res

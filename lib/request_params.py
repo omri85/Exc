@@ -15,7 +15,8 @@ class RequestParams(object):
         self.__error_messages = []
 
     def add_model_error(self, error_message):
-        """ Adds an error and makes model not valid """
+        """ Adds an error and makes model not valid
+        :error_message: error message string"""
         self.__error_messages.append(error_message)
     
     def is_valid(self):
@@ -28,7 +29,8 @@ class RequestParams(object):
 
     @staticmethod
     def parse(args):
-        """ Parses request args dict and returns RequestParams class """
+        """ Parses request args dict and returns RequestParams class
+        :args: request args dict"""
         request_params = RequestParams()
         missing_params = []
         datetime_format_errors = []
